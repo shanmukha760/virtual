@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: white;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff !important;
+        }
+        .content-section, .sidebar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            color: white;
+            margin-bottom: 20px;
+        }
+        .student-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background: linear-gradient(45deg, #ff0080, #ffcc00);
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+            margin: 10px 0;
+            display: block;
+            text-align: center;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(45deg, #ffcc00, #ff0080);
+            transform: scale(1.05);
+        }
+        .heading {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff0080, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .department-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .department-list li {
+            margin: 10px 0;
+        }
+        .department-list li a {
+            color: #ffcc00;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .department-list li a:hover {
+            color: #ff0080;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">HELLO Kiddo!</a>
+            <!-- Logout Button -->
+            <button class="btn btn-danger ms-auto" id="logout-btn">Logout</button>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="student-card">
+                        <h3>Gopisetti Maha Lakshmi</h3>
+                        <p><strong>Department:</strong> Computer Science (AI)</p>
+                        <p><strong>Year:</strong> 2nd</p>
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-custom" id="home-btn">Home</a>
+                        <a href="#" class="btn btn-custom" id="events-btn">Events</a>
+                        <a href="#" class="btn btn-custom" id="clubs-btn">Clubs</a>
+                        <a href="#" class="btn btn-custom" id="departments-btn">Departments Locations</a>
+                        <a href="#" class="btn btn-custom" id="department-list-btn">Department List</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="col-md-8">
+                <div id="home-section" class="content-section">
+                    <h1 class="heading">Welcome to Virtual College</h1>
+                    <p>Your all-in-one platform for college activities and clubs.</p>
+                    <h2>Directions for Students:</h2>
+                    <ul>
+                        <li>Click on <strong>Events</strong> to register for upcoming college events.</li>
+                        <li>Click on <strong>Clubs</strong> to explore and join different student clubs.</li>
+                        <li>Use the <strong>Departments Location</strong> section to find campus locations.</li>
+                        <li>Use the <strong>Department List</strong> to view all departments.</li>
+                        <li>Use the <strong>Home</strong> button to return to this page anytime.</li>
+                    </ul>
+                </div>
+                <div id="events-section" class="content-section d-none">
+                    <h2>Upcoming Events</h2>
+                    <ul>
+                        <li>Tech Fest - Feb 15</li>
+                        <li>Coding Workshop - Feb 20</li>
+                        <li>Cultural Night - Mar 5</li>
+                    </ul>
+                    <label for="event-date" class="form-label">Select Event Date</label>
+                    <input type="date" id="event-date" class="form-control">
+                    <label for="event-time" class="form-label">Select Event Time</label>
+                    <input type="time" id="event-time" class="form-control">
+                    <button class="btn btn-success mt-3" id="register-btn">Register</button>
+                </div>
+                <div id="clubs-section" class="content-section d-none">
+                    <h2>Join a Club</h2>
+                    <label for="clubs" class="form-label">Select Club</label>
+                    <select id="clubs" class="form-select">
+                        <option value="gdsc">GDSC</option>
+                        <option value="mlsc">MLSC</option>
+                        <option value="maitri">Maitri</option>
+                        <option value="nss">NSS</option>
+                        <option value="sports">Sports Club</option>
+                    </select>
+                    <div id="club-info" class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Club Details</h5>
+                            <p id="club-description" class="card-text">Select a club to view details</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="departments-section" class="content-section d-none">
+                    <h2>Departments and Locations</h2>
+                    <ul>
+                        <li><a href="https://maps.app.goo.gl/ghchCSwUQy6q3H66A" target="_blank">CAI - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/7M2syrsdXSsLxiG79" target="_blank">AIML - Block</a></li>
+                        <li><a href="https://maps.google.com/?q=CSE+Block+A%27" target="_blank">CSE - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/ZmkzZmJA77CpVZ8y6" target="_blank">CST - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/HEJ8esvT2f77NkqA6" target="_blank">ECE - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/rgzMxMQoBTZzDdL66" target="_blank">ECT - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/bxjHrq6rU3hSs4bA8" target="_blank">EEE - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/8NQg7PZ8EMkbrMCq7" target="_blank">MECH - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/QSP6GQ3MWAm8rToy8" target="_blank">CIVIL - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/DfpwGEckR1RBM2ac6" target="_blank">BSH - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/rKg5gymdsaD2wXUz7" target="_blank">Pharmacy - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/1dmcM4W9G7gFRYEW6" target="_blank">NIT - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/K1jdp5qZbhQfe4Na9" target="_blank">Polytechnic - Block</a></li>
+                        <li><a href="https://maps.app.goo.gl/V2ZnVjJrf2cGrgMp6" target="_blank">Administrative Office & Library</a></li>
+                        <li><a href="https://maps.app.goo.gl/4ARCKX1FkpvqPAh56" target="_blank">Placement Cell</a></li>
+                        <li><a href="https://maps.app.goo.gl/Ag7TpF6TGnGP3NSQ6" target="_blank">Indoor Sports</a></li>
+                        <li><a href="https://maps.app.goo.gl/rynj5qozSUA85cT1A" target="_blank">Boys Hostels</a></li>
+                        <li><a href="https://maps.app.goo.gl/wdHhopFbbsvcxqw47" target="_blank">Girls Hostels</a></li>
+                    </ul>
+                </div>
+                <div id="department-list-section" class="content-section d-none">
+                    <h2>Department List</h2>
+                    <ul class="department-list">
+                        <li>Computer Science and Engineering (CSE)</li>
+                        <li>Computer Science - Artificial Intelligence(AI)</li>
+                        <li>Artificial Intelligence & Machine Learning (AI & ML)</li>
+                        <li>Electrical and Electronics Engineering (EEE)</li>
+                        <li>Electronics and Communication Engineering (ECE)</li>
+                        <li>Civil Engineering</li>
+                        <li>Basic Sciences and Humanities (BSH)</li>
+                        <li>Mechanical Engineering (MECH)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => section.classList.add('d-none'));
+            document.getElementById(sectionId).classList.remove('d-none');
+        }
+        document.getElementById('home-btn').addEventListener('click', () => showSection('home-section'));
+        document.getElementById('events-btn').addEventListener('click', () => showSection('events-section'));
+        document.getElementById('clubs-btn').addEventListener('click', () => showSection('clubs-section'));
+        document.getElementById('departments-btn').addEventListener('click', () => showSection('departments-section'));
+        document.getElementById('department-list-btn').addEventListener('click', () => showSection('department-list-section'));
+
+        document.getElementById('clubs').addEventListener('change', function() {
+            const clubDescriptions = {
+                'gdsc': 'Google Developer Student Clubs - Technology Innovation',
+                'mlsc': 'Machine Learning Students Club - AI & Data Science',
+                'maitri': 'Maitri - Social Awareness & Welfare Club',
+                'nss': 'NSS - National Service Scheme for Volunteering',
+                'sports': 'Sports Club - Fitness & Athletics'
+            };
+            document.getElementById('club-description').textContent = clubDescriptions[this.value] || 'No description available';
+        });
+
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will be logged out.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Logout',
+                cancelButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.removeItem('currentUser');
+                    Swal.fire('Logged Out', 'You have been successfully logged out.', 'success').then(() => {
+                        window.location.href = 'login.html';
+                    });
+                }
+            });
+        });
+
+        // Event registration functionality
+        document.getElementById('register-btn').addEventListener('click', function () {
+            const eventDate = document.getElementById('event-date').value;
+            const eventTime = document.getElementById('event-time').value;
+
+            if (!eventDate || !eventTime) {
+                Swal.fire('Error', 'Please select both the event date and time.', 'error');
+                return;
+            }
+
+            Swal.fire({
+                title: 'Confirm Registration',
+                text: `You are registering for an event on ${eventDate} at ${eventTime}. Are you sure?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Register',
+                cancelButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire('Success', 'You have successfully registered for the event!', 'success');
+                    console.log('Event Date:', eventDate);
+                    console.log('Event Time:', eventTime);
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
