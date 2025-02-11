@@ -1,0 +1,120 @@
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.form-control {
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+.btn-primary {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+.forgot-password {
+    color: #764ba2;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Event Banner */
+.event-banner-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 30px;
+}
+
+.event-banner {
+    background: url('assets/images/event-banner.png') no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height for centering */
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Option 3: Tech-inspired */
+h2.virtual-portal-tech {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d10606;
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+    letter-spacing: 3px;
+}
+
+/* Option 4: Clean and Minimal */
+h2.Sri-Vasavi {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 3px solid #2193b0;
+    padding-bottom: 10px;
+    display: inline-block;
+}
